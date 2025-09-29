@@ -1,0 +1,61 @@
+package com.daw.services;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.daw.persistence.entities.Tarea;
+import com.daw.persistence.entities.enums.Estado;
+import com.daw.persistence.repositories.TareaRepository;
+import com.daw.services.exceptions.TareaException;
+import com.daw.services.exceptions.TareaNotFoundException;
+
+@Service
+public class TareaServices {
+	@Autowired
+	private TareaRepository tareaRepository;
+	
+	
+	public List<Tarea> findAll(){
+		return this.tareaRepository.findAll();
+	}
+	
+	public Tarea findById(int idTarea){
+		
+		return this.tareaRepository.findById(idTarea).get();
+	}
+	
+	//create
+	public Tarea create(Tarea tarea) { 
+		tarea.setId(0);
+		tarea.setFechaCreacion(LocalDate.now());
+		tarea.setEstado(Estado.PENDIENTE);
+		
+		return this.tareaRepository.save(tarea);
+	}
+	
+	//update
+	public Tarea update(int idTarea, Tarea tarea) { 
+		if(idTarea != tarea.getId()) {
+ 			throw new TareaException("El ID del path ("+ idTarea +") y el id del body ("+ tarea.getId() +") no coinciden");
+ 		}
+ 		if(!this.tareaRepository.existsById(idTarea)) {
+ 			throw new TareaNotFoundException("No existe la tarea con ID: " + idTarea);
+ 		}
+ 		if(tarea.getFechaCreacion() != null || tarea.getEstado() != null) {
+ 			throw new TareaException("No se permite modificar la fecha de creación y/o el estado. ");
+ 		}
+ 
+ 		Tarea tareaBD = this.findById(tarea.getId());
+ 		tareaBD.setTitulo(tarea.getTitulo());
+ 		tareaBD.setDescripcion(tarea.getDescripcion());
+ 		tareaBD.setFechaVencimiento(tarea.getFechaVencimiento());
+ 
+ 		return this.tareaRepository.save(tareaBD);
+	}
+	
+	
+	
+}
