@@ -95,7 +95,7 @@ public class TareaService {
 			throw new TareaException("La tarea ya está completada o ya está en progreso");
 		}
 
-		tarea.setEstado(Estado.EN_PROGRESO);
+		tarea.setEstado(Estado.EN_PROCESO);
 		return this.tareaRepository.save(tarea);
 	}
 	
@@ -104,7 +104,7 @@ public class TareaService {
 	public Tarea completarTarea(int idTarea) {
 		Tarea tarea = this.findById(idTarea);
 
-		if (!tarea.getEstado().equals(Estado.EN_PROGRESO)) {
+		if (!tarea.getEstado().equals(Estado.EN_PROCESO)) {
 			throw new TareaException("La tarea ya está completada o ya está en progreso");
 		}
 
@@ -120,7 +120,7 @@ public class TareaService {
 	
 //	Obtener las tareas en progreso.
 	public List<Tarea> enProgreso() {
-		return this.tareaRepository.findByEstado(Estado.EN_PROGRESO);
+		return this.tareaRepository.findByEstado(Estado.EN_PROCESO);
 	}
 //	Obtener las tareas completadas.
 	public List<Tarea> completadas() {
@@ -138,11 +138,11 @@ public class TareaService {
  	
  //Obtener por titulo
  	public List<Tarea> buscarPorTitulo(String titulo) {
- 	    List<Tarea> task= tareaRepository.findByTitulo(titulo);
- 	    if (task.isEmpty()) {
- 	        throw new TareaNotFoundException("No existen tareas con el nombre: " + titulo);
+ 	    List<Tarea> tareas = tareaRepository.findByTituloContainingIgnoreCase(titulo);
+ 	    if (tareas.isEmpty()) {
+ 	        throw new TareaNotFoundException("No existen tareas con el título: " + titulo);
  	    }
- 	    return task;
+ 	    return tareas;
  	}
 	
  	

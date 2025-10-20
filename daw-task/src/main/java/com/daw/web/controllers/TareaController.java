@@ -85,7 +85,7 @@ public class TareaController {
 	@PutMapping("/{idTarea}/completar")
 	public ResponseEntity<?> completarTarea(@PathVariable int idTarea){
 		try {
-			return ResponseEntity.ok(this.tareaService.marcarEnProgreso(idTarea));
+			return ResponseEntity.ok(this.tareaService.completarTarea(idTarea));
 		} catch (TareaNotFoundException ex) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
 		} catch (TareaException ex) {
@@ -98,7 +98,7 @@ public class TareaController {
 		return ResponseEntity.ok(this.tareaService.pendientes());
 	}
 
-	@GetMapping("/en-progreso")
+	@GetMapping("/en-proceso")
 	public ResponseEntity<?> enProgreso(){
 		return ResponseEntity.ok(this.tareaService.enProgreso());
 	}
@@ -120,10 +120,15 @@ public class TareaController {
 	}
 	
 	
-	/*@GetMapping("{/titulo}/buscarTitulo")
-	public ResponseEntity<?> buscarPorTitulo(@PathVariable String titulo){
-		return ResponseEntity.ok(this.tareaService.buscarPorTitulo(titulo));
-	}*/
+	@GetMapping("/buscar/{titulo}")
+	public ResponseEntity<?> buscarPorTitulo(@PathVariable String titulo) {
+	    try {
+	        return ResponseEntity.ok(this.tareaService.buscarPorTitulo(titulo));
+	    } catch (TareaNotFoundException ex) {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+	    }
+	}
+
 	
 	
 

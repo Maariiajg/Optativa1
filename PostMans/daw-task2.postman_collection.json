@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "f2c67bba-c87c-43eb-b04c-d824ee8c3b24",
+		"name": "daw-task2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43644344",
+		"_collection_link": "https://maria-2547129.postman.co/workspace/Maria's-Workspace~6f19676a-ae09-4ce1-8352-e6bfb10e8a16/collection/43644344-f2c67bba-c87c-43eb-b04c-d824ee8c3b24?action=share&source=collection_link&creator=43644344"
+	},
+	"item": [
+		{
+			"name": "Buscar todo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/tareas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/tareas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear tarea",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Hacer el postman\",\r\n    \"descripcion\": \"Probar los endspoints\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar tarea",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 13,\r\n    \"titulo\": \"Hacer el postman para Vladi\",\r\n    \"descripcion\": \"Probar los endspoints\",\r\n    \"fechaVencimiento\": \"2026-10-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar tarea",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Hacer el postman\",\r\n    \"descripcion\": \"Probar los endspoints\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-01\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Iniciar tarea",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"titulo\": \"Preparar informe\",\r\n    \"descripcion\": \"Redactar informe mensual de ventas\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-05\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/12/iniciar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"12",
+						"iniciar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Completar tarea",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"titulo\": \"Preparar informe\",\r\n    \"descripcion\": \"Redactar informe mensual de ventas\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-05\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/12/completar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"12",
+						"completar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar pendientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"titulo\": \"Preparar informe\",\r\n    \"descripcion\": \"Redactar informe mensual de ventas\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-05\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/pendientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"pendientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar en proceso",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"titulo\": \"Preparar informe\",\r\n    \"descripcion\": \"Redactar informe mensual de ventas\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-05\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/en-proceso",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"en-proceso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar completadas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"titulo\": \"Preparar informe\",\r\n    \"descripcion\": \"Redactar informe mensual de ventas\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-05\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/completadas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"completadas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar vencidas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"titulo\": \"Preparar informe\",\r\n    \"descripcion\": \"Redactar informe mensual de ventas\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-05\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/vencidas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"vencidas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar NO vencidas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"titulo\": \"Preparar informe\",\r\n    \"descripcion\": \"Redactar informe mensual de ventas\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-05\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/no_vencidas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"no_vencidas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por titulo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 12,\r\n    \"titulo\": \"Preparar informe\",\r\n    \"descripcion\": \"Redactar informe mensual de ventas\",\r\n    \"estado\": \"EN_PROCESO\",\r\n    \"fechaVencimiento\": \"2026-10-05\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/tareas/buscar/Revisión de código",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"tareas",
+						"buscar",
+						"Revisión de código"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
