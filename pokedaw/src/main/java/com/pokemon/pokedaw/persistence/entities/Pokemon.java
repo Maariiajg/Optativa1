@@ -20,13 +20,15 @@ import lombok.Setter;
 @Table(name = "Pokemon")
 @Getter
 @Setter
-public class Pokemons {
+public class Pokemon {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name = "numero_pokedex")
 	private int numeroPokedex;
+	
 	private String titulo;
 	
 	@Enumerated(value = EnumType.STRING)
