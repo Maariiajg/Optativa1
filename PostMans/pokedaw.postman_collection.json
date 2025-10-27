@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "ac9baf24-68ff-474c-962e-5180d2d6ea7a",
+		"name": "pokedaw",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43644344",
+		"_collection_link": "https://maria-2547129.postman.co/workspace/Maria's-Workspace~6f19676a-ae09-4ce1-8352-e6bfb10e8a16/collection/43644344-ac9baf24-68ff-474c-962e-5180d2d6ea7a?action=share&source=collection_link&creator=43644344"
+	},
+	"item": [
+		{
+			"name": "Buscar todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/pokemons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/pokemons/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear pokemon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroPokedex\": 20,\r\n    \"titulo\": \"Pikachu\",\r\n    \"tipo1\": \"NORMAL\",\r\n    \"capturado\": \"SUPERBALL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/pokemons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update pokemon",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 11,\r\n    \"numeroPokedex\": 20,\r\n    \"titulo\": \"Pikachu\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/pokemons/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar pokemon",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 11,\r\n    \"numeroPokedex\": 20,\r\n    \"titulo\": \"Pikachu\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/pokemons/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar numero pokedex",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/pokemons/pokedex/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons",
+						"pokedex",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar captura entre fechas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/pokemons/fecha?fechaInicio=2025-01-15&fechaFin=2025-03-05",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons",
+						"fecha"
+					],
+					"query": [
+						{
+							"key": "fechaInicio",
+							"value": "2025-01-15"
+						},
+						{
+							"key": "fechaFin",
+							"value": "2025-03-05"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por tipo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/pokemons/tipo/AGUA",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons",
+						"tipo",
+						"AGUA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar tipo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 10,\r\n    \"tipo1\": \"ELECTRICO\",\r\n    \"tipo2\": \"HIELO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/pokemons/10/tipo?tipo2=VOLADOR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"pokemons",
+						"10",
+						"tipo"
+					],
+					"query": [
+						{
+							"key": "tipo2",
+							"value": "VOLADOR"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
