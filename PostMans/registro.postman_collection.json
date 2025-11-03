@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "d40f4feb-a6d9-456b-aab4-d6ba07efb1fc",
+		"name": "registro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43644344",
+		"_collection_link": "https://maria-2547129.postman.co/workspace/Maria's-Workspace~6f19676a-ae09-4ce1-8352-e6bfb10e8a16/collection/43644344-d40f4feb-a6d9-456b-aab4-d6ba07efb1fc?action=share&source=collection_link&creator=43644344"
+	},
+	"item": [
+		{
+			"name": "Buscar todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/registros",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"registros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar registro sin fecha ni precipitacion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 1,\r\n        \"ubicacion\": \"Sevilla\",\r\n        \"temperatura\": 50,\r\n        \"unidad\": \"CELSIUS\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/registros/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"registros",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar ubicaion y fechas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/registros/buscar?ubicacion=Sevilla&fechaInicio=2025-01-10&fechaFin=2025-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"registros",
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "ubicacion",
+							"value": "Sevilla"
+						},
+						{
+							"key": "fechaInicio",
+							"value": "2025-01-10"
+						},
+						{
+							"key": "fechaFin",
+							"value": "2025-01-13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar precipitaciones",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/registros/1/precipitacion?anterior=0.0&nueva=3.1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"registros",
+						"1",
+						"precipitacion"
+					],
+					"query": [
+						{
+							"key": "anterior",
+							"value": "0.0"
+						},
+						{
+							"key": "nueva",
+							"value": "3.1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
