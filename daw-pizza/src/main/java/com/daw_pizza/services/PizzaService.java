@@ -7,59 +7,54 @@ import org.springframework.stereotype.Service;
 
 import com.daw_pizza.persistence.entities.Pizza;
 import com.daw_pizza.persistence.repositories.PizzaRepository;
-import com.daw_pizza.services.exceptions.PizzaException;
 import com.daw_pizza.services.exceptions.PizzaNotFoundException;
 
 @Service
 public class PizzaService {
-
+	
 	@Autowired
 	private PizzaRepository pizzaRepository;
-
-	// findAll
-	public List<Pizza> findAll() {
+	
+	public List<Pizza> findAll(){
 		return this.pizzaRepository.findAll();
 	}
-
-	// findById
+	
 	public Pizza findById(int idPizza) {
-		if (!this.pizzaRepository.existsById(idPizza)) {
-			throw new PizzaNotFoundException("La pizza con id " + idPizza + " no existe.");
+		if(!this.pizzaRepository.existsById(idPizza)) {
+			throw new PizzaNotFoundException("El ID indicado no existe. ");
 		}
+		
 		return this.pizzaRepository.findById(idPizza).get();
 	}
-
-	// create
+	
 	public Pizza create(Pizza pizza) {
 		pizza.setId(0);
+		
 		return this.pizzaRepository.save(pizza);
 	}
-
-	// update
-	public Pizza update(Pizza pizza, int idPizza) {
-		if (pizza.getId() != idPizza) {
-			throw new PizzaException(String.format("El id del body (%d) y el id del path (%d) no coinciden", pizza.getId(), idPizza));
+	
+	public Pizza update(int idPizza, Pizza pizza) {
+		if(idPizza != pizza.getId()) {
+			throw new PizzaNotFoundException("El ID del path y del body no coinciden. ");
 		}
-		if (!this.pizzaRepository.existsById(idPizza)) {
-			throw new PizzaNotFoundException("La pizza con id " + idPizza + " no existe.");
-		}
-
+		
 		Pizza pizzaBD = this.findById(idPizza);
-		pizzaBD.setNombre(pizza.getNombre());
 		pizzaBD.setDescripcion(pizza.getDescripcion());
-		pizzaBD.setPrecio(pizza.getPrecio());
 		pizzaBD.setDisponible(pizza.isDisponible());
+		pizzaBD.setNombre(pizza.getNombre());
+		pizzaBD.setPrecio(pizza.getPrecio());
 		pizzaBD.setVegana(pizza.isVegana());
-		pizzaBD.setVegetariana(pizza.isVegetariana());
-
-		return this.pizzaRepository.save(pizzaBD);
+		pizzaBD.setVegetatiana(pizza.isVegetatiana());
+		
+		return this.pizzaRepository.save(pizza);
 	}
-
-	// delete
-	public void delete(int idPizza) {
-		if (!this.pizzaRepository.existsById(idPizza)) {
-			throw new PizzaNotFoundException("La pizza con id " + idPizza + " no existe.");
+	
+	public void deleteById(int idPizza) {
+		if(!this.pizzaRepository.existsById(idPizza)) {
+			throw new PizzaNotFoundException("El ID indicado no existe. ");
 		}
+		
 		this.pizzaRepository.deleteById(idPizza);
 	}
+
 }
