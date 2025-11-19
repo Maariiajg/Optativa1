@@ -46,7 +46,6 @@ public class Pedido {
 	private String notas;
 	
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name = "id_cliente", referencedColumnName = "id", insertable = false, updatable = false)
 	private Cliente cliente; 
 	

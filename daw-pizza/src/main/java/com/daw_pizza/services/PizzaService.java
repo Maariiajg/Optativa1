@@ -56,5 +56,37 @@ public class PizzaService {
 		
 		this.pizzaRepository.deleteById(idPizza);
 	}
+	
+	//actividad 4
+	public List<Pizza> findDisponiblesOrdenadasPorPrecio() {
+	    return this.pizzaRepository.findByDisponibleTrueOrderByPrecioAsc();
+	}
+
+	public List<Pizza> buscarPorNombre(String nombre) {
+	    return this.pizzaRepository.findByNombreContainingIgnoreCaseAndDisponibleTrue(nombre);
+	}
+
+	public List<Pizza> buscarQueLlevenIngrediente(String ing) {
+	    return this.pizzaRepository.findByDescripcionContainingIgnoreCase(ing);
+	}
+
+	public List<Pizza> buscarQueNoLlevenIngrediente(String ing) {
+	    return this.pizzaRepository.findByDescripcionNotContainingIgnoreCase(ing);
+	}
+
+	// Actualizar PRECIO
+	public Pizza actualizarPrecio(int idPizza, double nuevoPrecio) {
+	    Pizza pizza = this.findById(idPizza);
+	    pizza.setPrecio(nuevoPrecio);
+	    return this.pizzaRepository.save(pizza);
+	}
+
+	// Marcar como disponible / no disponible
+	public Pizza cambiarDisponibilidad(int idPizza, boolean disponible) {
+	    Pizza pizza = this.findById(idPizza);
+	    pizza.setDisponible(disponible);
+	    return this.pizzaRepository.save(pizza);
+	}
+
 
 }
