@@ -1,11 +1,18 @@
 package com.daw_pizza.services.dto;
 
-public class PizzaPedidoOutputDTO {
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-	private Integer id;
+@NoArgsConstructor
+@Getter
+@Setter
+public class PizzaPedidoOutputDTO {
+	
+	private int id;
 	private Double cantidad;
 	private Double precio;
 	private Integer idPizza;
 	private String pizza;
-	
+
 }

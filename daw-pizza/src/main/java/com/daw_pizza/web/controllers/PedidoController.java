@@ -9,14 +9,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.daw_pizza.persistence.entities.Pedido;
 import com.daw_pizza.services.PedidoService;
-import com.daw_pizza.services.exceptions.PedidoException;
 import com.daw_pizza.services.exceptions.PedidoNotFoundException;
 import com.daw_pizza.services.exceptions.PizzaNotFoundException;
 
@@ -51,18 +49,18 @@ public class PedidoController {
 //		}
 	}
 	
-	@PutMapping("/{idPedido}")
-	public ResponseEntity<?> update(@PathVariable int idPedido, @RequestBody Pedido pedido){
-		try {
-			return ResponseEntity.ok(this.pedidoService.update(idPedido, pedido));
-		}
-		catch(PedidoNotFoundException ex) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-		}
-		catch(PedidoException ex) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-		}
-	}
+//	@PutMapping("/{idPedido}")
+//	public ResponseEntity<?> update(@PathVariable int idPedido, @RequestBody Pedido pedido){
+//		try {
+//			return ResponseEntity.ok(this.pedidoService.update(idPedido, pedido));
+//		}
+//		catch(PedidoNotFoundException ex) {
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+//		}
+//		catch(PedidoException ex) {
+//			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+//		}
+//	}
 	
 	@DeleteMapping("/{idPizza}")
 	public ResponseEntity<?> delete(@PathVariable int idPedido){
@@ -78,17 +76,17 @@ public class PedidoController {
 	
 	//ejercicio 4
 	// Añadir notas al pedido
-	@PutMapping("/{idPedido}/notas")
-	public ResponseEntity<?> agregarNotas(
-	        @PathVariable int idPedido,
-	        @RequestBody String notas) {
-
-	    try {
-	        return ResponseEntity.ok(this.pedidoService.añadirNotas(idPedido, notas));
-	    } catch (PedidoNotFoundException ex) {
-	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-	    }
-	}
+//	@PutMapping("/{idPedido}/notas")
+//	public ResponseEntity<?> agregarNotas(
+//	        @PathVariable int idPedido,
+//	        @RequestBody String notas) {
+//
+//	    try {
+//	        return ResponseEntity.ok(this.pedidoService.añadirNotas(idPedido, notas));
+//	    } catch (PedidoNotFoundException ex) {
+//	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+//	    }
+//	}
 
 	
 }

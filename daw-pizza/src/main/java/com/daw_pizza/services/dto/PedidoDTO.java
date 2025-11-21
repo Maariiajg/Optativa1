@@ -16,7 +16,7 @@ public class PedidoDTO {
 	
 	private int id;
 	private LocalDateTime fecha;
-	private double total;
+	private Double total;
 	private Metodo metodo;
 	private String cliente;
 	private String telefono;
@@ -24,5 +24,5 @@ public class PedidoDTO {
 	private String notas;
 	private int numeroPizzas;
 	private List<PizzaPedidoOutputDTO> pizzas;
-	
+
 }

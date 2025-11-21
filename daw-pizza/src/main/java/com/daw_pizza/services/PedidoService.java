@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.daw_pizza.persistence.entities.Pedido;
 import com.daw_pizza.persistence.repositories.PedidoRepository;
-import com.daw_pizza.services.exceptions.PedidoNotFoundException;
+import com.daw_pizza.services.dto.PedidoDTO;
+import com.daw_pizza.services.exceptions.ClienteNotFoundException;
+import com.daw_pizza.services.mappers.PedidoMapper;
 
 @Service
 public class PedidoService {
+
 	@Autowired
 	private PedidoRepository pedidoRepository;	
 	
@@ -18,12 +21,12 @@ public class PedidoService {
 		return this.pedidoRepository.findAll();
 	}
 	
-	public Pedido findById(int idPedido) {
-		if(this.pedidoRepository.existsById(idPedido)) {
-			throw new PedidoNotFoundException("El ID indicado no existe. ");
+	public PedidoDTO findById(int idPedido) {
+		if(!this.pedidoRepository.existsById(idPedido)) {
+			throw new ClienteNotFoundException("El ID indicado no existe. ");
 		}
 		
-		return this.pedidoRepository.findById(idPedido).get();
+		return PedidoMapper.toDTO(this.pedidoRepository.findById(idPedido).get());
 	}
 	
 	public Pedido create(Pedido pedido) {
@@ -32,33 +35,30 @@ public class PedidoService {
 		return this.pedidoRepository.save(pedido);
 	}
 	
-	public Pedido update(int idPedido, Pedido pedido) {
-		Pedido pedidoBD = this.findById(idPedido);
-		pedidoBD.setIdCliente(pedido.getIdCliente());
-		pedidoBD.setFecha(pedido.getFecha());
-		pedidoBD.setTotal(pedido.getTotal());
-		pedidoBD.setMetodo(pedido.getMetodo());
-		pedidoBD.setNotas(pedido.getNotas());
-		
-		return this.pedidoRepository.save(pedido);
-	}
+//		public Pedido update(int idPedido, Pedido pedido) {
+//			Pedido pedidoBD = this.findById(idPedido);
+//			pedidoBD.setIdCliente(pedido.getIdCliente());
+//			pedidoBD.setFecha(pedido.getFecha());
+//			pedidoBD.setTotal(pedido.getTotal());
+//			pedidoBD.setMetodo(pedido.getMetodo());
+//			pedidoBD.setNotas(pedido.getNotas());
+//			
+//			return this.pedidoRepository.save(pedido);
+//		}
 	
 	public void deleteById(int idPedido) {
 		if(!this.pedidoRepository.existsById(idPedido)) {
-			throw new PedidoNotFoundException("El ID indicado no existe. ");
+			throw new ClienteNotFoundException("El ID indicado no existe. ");
 		}
 		
 		this.pedidoRepository.deleteById(idPedido);
 	}
-	
-	
-	//ejercicio 4
-	public Pedido añadirNotas(int idPedido, String notas) {
-	    Pedido pedido = this.findById(idPedido);
-	    pedido.setNotas(notas);
-	    return this.pedidoRepository.save(pedido);
-	}
 
-	
-	
+	//ejercicio 4
+//	public Pedido añadirNotas(int idPedido, String notas) {
+//	    Pedido pedido = this.findById(idPedido);
+//	    pedido.setNotas(notas);
+//	    return this.pedidoRepository.save(pedido);
+//	}
+//	
 }
