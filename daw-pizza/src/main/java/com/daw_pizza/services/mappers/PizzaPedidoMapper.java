@@ -1,5 +1,7 @@
 package com.daw_pizza.services.mappers;
 
+import java.util.List;
+
 import com.daw_pizza.persistence.entities.PizzaPedido;
 import com.daw_pizza.services.dto.PizzaPedidoOutputDTO;
 
@@ -16,5 +18,21 @@ public class PizzaPedidoMapper {
 		
 		return dto;
 	}
+	
+	public static List<PizzaPedidoOutputDTO> toDtos(List<PizzaPedido> pizzaPedidos){
+		return pizzaPedidos.stream().map(pp -> toDTO(pp)).toList();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
